@@ -4,42 +4,105 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Registrar una mantencion</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="container">
+    <div class="user-form">
+        <h2>Crear Mantención</h2>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group pb-4">
-                <label asp-for="HerramientaId" class="control-label">Id de la herramienta</label>
-                <select asp-for="HerramientaId" class ="form-control" asp-items="ViewBag.HerramientaId"></select>
+            <div class="form-group">
+                <label asp-for="HerramientaId" class="control-label"></label>
+                <select asp-for="HerramientaId" class="form-control" asp-items="ViewBag.HerramientaId"></select>
             </div>
-            <div class="form-group pb-4">
-                <label asp-for="UsuarioId" class="control-label">Id del usuario</label>
-                <select asp-for="UsuarioId" class ="form-control" asp-items="ViewBag.UsuarioId"></select>
+            <div class="form-group">
+                <label asp-for="UsuarioId" class="control-label"></label>
+                <select asp-for="UsuarioId" class="form-control" asp-items="ViewBag.UsuarioId"></select>
             </div>
-            <div class="form-group pb-4">
-                <label asp-for="FechaFin" class="control-label">Fecha de termino</label>
+            <div class="form-group">
+                <label asp-for="FechaFin" class="control-label"></label>
                 <input asp-for="FechaFin" class="form-control" />
                 <span asp-validation-for="FechaFin" class="text-danger"></span>
             </div>
-            <div class="form-group pb-4">
+            <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
                 <input asp-for="Descripcion" class="form-control" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
-            <div class="form-group pb-4">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </form>
+        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index" class="btn btn-primary">Volver atras</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+<style>
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('/Imagenes/Mantencion.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .menu {
+        background-color: #800080;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+        .menu a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+    .user-form {
+        background-color: #800080;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        color: white;
+        width: 300px;
+        text-align: center;
+    }
+
+        .user-form h2 {
+            margin-bottom: 20px;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+        }
+
+    .view-users {
+        color: #00BFFF;
+        text-decoration: none;
+        display: block;
+        margin-top: 20px;
+    }
+</style>

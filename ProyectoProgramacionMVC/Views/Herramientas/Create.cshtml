@@ -4,38 +4,101 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Crear herramienta</h1>
-
-<hr/>
-<div class="row">
-    <div class="col-md-4">
+<div class="container">
+    <div class="user-form">
+        <h2>Crear Herramienta</h2>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group pb-4">
+            <div class="form-group">
                 <label asp-for="ModeloId" class="control-label"></label>
-                <select asp-for="ModeloId" class ="form-control" asp-items="ViewBag.ModeloId"></select>
+                <select asp-for="ModeloId" class="form-control" asp-items="ViewBag.ModeloId"></select>
             </div>
-            <div class="form-group pb-4">
+            <div class="form-group">
                 <label asp-for="NumeroSerie" class="control-label"></label>
                 <input asp-for="NumeroSerie" class="form-control" />
                 <span asp-validation-for="NumeroSerie" class="text-danger"></span>
             </div>
-            <div class="form-group pb-4">
+            <div class="form-group">
                 <label asp-for="Estado" class="control-label"></label>
                 <input asp-for="Estado" class="form-control" />
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
-            <div class="form-group pb-4">
+            <div class="form-group">
                 <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </form>
+        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index" class="btn btn-primary">Volver atras</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+<style>
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('/Imagenes/Herramientas.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .menu {
+        background-color: #800080;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+        .menu a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+    .user-form {
+        background-color: #800080;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        color: white;
+        width: 300px;
+        text-align: center;
+    }
+
+        .user-form h2 {
+            margin-bottom: 20px;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+        }
+
+    .view-users {
+        color: #00BFFF;
+        text-decoration: none;
+        display: block;
+        margin-top: 20px;
+    }
+</style>

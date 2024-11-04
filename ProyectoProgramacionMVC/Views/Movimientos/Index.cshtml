@@ -1,59 +1,64 @@
 ﻿@model IEnumerable<ProyectoProgramacionMVC.Models.Movimiento>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Movimientos";
 }
 
-<h1>Index</h1>
+<div class="container">
+    <div class="movement-list">
+        <h2>Lista de Movimientos</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoMovimiento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Observacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Herramienta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoMovimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Herramienta.HerramientaId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario.UsuarioId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MovimientoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MovimientoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MovimientoId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <a asp-action="Create" class="btn btn-primary">Crear Nuevo Movimiento</a>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.TipoMovimiento)</th>
+                    <th>@Html.DisplayNameFor(model => model.Fecha)</th>
+                    <th>@Html.DisplayNameFor(model => model.Observacion)</th>
+                    <th>@Html.DisplayNameFor(model => model.Herramienta)</th>
+                    <th>@Html.DisplayNameFor(model => model.Usuario)</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.TipoMovimiento)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Fecha)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Observacion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Herramienta.HerramientaId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Usuario.UsuarioId)</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.MovimientoId" class="btn btn-warning">Editar</a>
+                            <a asp-action="Details" asp-route-id="@item.MovimientoId" class="btn btn-info">Detalles</a>
+                            <a asp-action="Delete" asp-route-id="@item.MovimientoId" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .movement-list {
+        background-color: #800080;
+        padding: 20px;
+        border-radius: 8px;
+        color: white;
+        width: 80%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+    }
+
+    .table th, .table td {
+        color: white;
+    }
+
+    .btn {
+        margin-right: 5px;
+    }
+</style>

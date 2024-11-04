@@ -1,59 +1,64 @@
 ﻿@model IEnumerable<ProyectoProgramacionMVC.Models.Mantencion>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Mantenciones";
 }
 
-<h1>Modulo de mantenciones</h1>
+<div class="container">
+    <div class="maintenance-list">
+        <h2>Lista de Mantenciones</h2>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Ingresar nueva mantencion</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaFin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Herramienta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaFin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Herramienta.HerramientaId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario.UsuarioId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MantencionId" class="btn btn-dark">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.MantencionId" class="btn btn-info">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.MantencionId" class="btn btn-danger">Eliminar</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <a asp-action="Create" class="btn btn-primary">Ingresar Nueva Mantención</a>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.FechaInicio)</th>
+                    <th>@Html.DisplayNameFor(model => model.FechaFin)</th>
+                    <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                    <th>@Html.DisplayNameFor(model => model.Herramienta)</th>
+                    <th>@Html.DisplayNameFor(model => model.Usuario)</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.FechaInicio)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FechaFin)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Herramienta.HerramientaId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Usuario.UsuarioId)</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.MantencionId" class="btn btn-warning">Editar</a>
+                            <a asp-action="Details" asp-route-id="@item.MantencionId" class="btn btn-info">Detalles</a>
+                            <a asp-action="Delete" asp-route-id="@item.MantencionId" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .maintenance-list {
+        background-color: #800080;
+        padding: 20px;
+        border-radius: 8px;
+        color: white;
+        width: 80%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+    }
+
+    .table th, .table td {
+        color: white;
+    }
+
+    .btn {
+        margin-right: 5px;
+    }
+</style>

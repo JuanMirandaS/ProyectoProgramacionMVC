@@ -17,6 +17,14 @@ html {
   min-height: 100%;
 }
 
+.navbar-custom {
+    background-color: #800080;
+}
+
+.footer-custom {
+    background-color: #800080;
+}
+
 body {
   margin-bottom: 60px;
 }
