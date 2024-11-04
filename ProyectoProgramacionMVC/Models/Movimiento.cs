@@ -12,7 +12,7 @@ namespace ProyectoProgramacionMVC.Models
         public DateTime Fecha { get; set; }
         public string? Observacion { get; set; }
 
-        public virtual Herramientum Herramienta { get; set; } = null!;
-        public virtual Usuario Usuario { get; set; } = null!;
+        public virtual Herramientum? Herramienta { get; set; } = null!;
+        public virtual Usuario? Usuario { get; set; } = null!;
     }
 }

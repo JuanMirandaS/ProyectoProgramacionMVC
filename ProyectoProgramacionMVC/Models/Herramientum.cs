@@ -17,7 +17,7 @@ namespace ProyectoProgramacionMVC.Models
         public string Estado { get; set; } = null!;
         public DateTime FechaIngreso { get; set; }
 
-        public virtual Modelo Modelo { get; set; } = null!;
+        public virtual Modelo? Modelo { get; set; } = null!;
         public virtual ICollection<Mantencion> Mantencions { get; set; }
         public virtual ICollection<Movimiento> Movimientos { get; set; }
     }

@@ -58,7 +58,7 @@ namespace ProyectoProgramacionMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MantencionId,HerramientaId,UsuarioId,FechaInicio,FechaFin,Descripcion")] Mantencion mantencion)
+        public async Task<IActionResult> Create([Bind("HerramientaId,UsuarioId,FechaInicio,FechaFin,Descripcion")] Mantencion mantencion)
         {
             if (ModelState.IsValid)
             {
