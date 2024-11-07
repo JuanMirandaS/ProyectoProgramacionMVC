@@ -163,5 +163,17 @@ namespace ProyectoProgramacionMVC.Controllers
         {
           return (_context.Herramienta?.Any(e => e.HerramientaId == id)).GetValueOrDefault();
         }
+
+        //Este era un posible implementacion de solicitud ajax
+        public async Task<IActionResult> Buscar(string termino)
+        {
+            var herramientas = await _context.Herramienta
+                .Include(h => h.Modelo)
+                .Where(h => h.NumeroSerie.Contains(termino) ||
+                            h.Modelo.Nombre.Contains(termino))
+                .ToListAsync();
+            return PartialView("_ListaHerramientas", herramientas);
+        }
+
     }
 }
